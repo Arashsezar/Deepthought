@@ -105,7 +105,7 @@ public class DatabaseManagerImpl implements DatabaseManager {
             final PreparedStatement preparedStatement = connetion.getPreparedStatement("INSERT INTO Users (userId, userHash) " +
                     "VALUES (?,?)");
             preparedStatement.setInt(1, user.getUserId());
-            if ((user.getUserHash() == null) || (user.getUserHash() != 0L)) {
+            if ((user.getUserHash() == null) || (user.getUserHash() == 0L)) {
                 preparedStatement.setNull(2, Types.NUMERIC);
             } else {
                 preparedStatement.setLong(2, user.getUserHash());
