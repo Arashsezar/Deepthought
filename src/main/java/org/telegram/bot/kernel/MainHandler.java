@@ -1,6 +1,7 @@
 package org.telegram.bot.kernel;
 
 import org.jetbrains.annotations.NotNull;
+import org.telegram.api.engine.RpcException;
 import org.telegram.api.functions.updates.TLRequestUpdatesGetState;
 import org.telegram.api.updates.TLAbsUpdates;
 import org.telegram.api.updates.TLUpdateShort;
@@ -180,7 +181,7 @@ public class MainHandler implements NotificationsService.NotificationObserver {
             } else {
                 BotLogger.error(LOGTAG, "Error getting updates state");
             }
-        } catch (ExecutionException e) {
+        } catch (ExecutionException | RpcException e) {
             BotLogger.error(LOGTAG, e);
         }
     }

@@ -1,9 +1,11 @@
 package org.telegram.plugins.echo.handlers;
 
 import org.jetbrains.annotations.NotNull;
+import org.telegram.api.engine.RpcException;
 import org.telegram.api.message.TLMessage;
 import org.telegram.api.updates.TLUpdateShortMessage;
 import org.telegram.bot.kernel.IKernelComm;
+import org.telegram.bot.services.BotLogger;
 import org.telegram.bot.structure.IUser;
 import org.telegram.plugins.echo.handlers.interfaces.IMessageHandler;
 
@@ -14,6 +16,7 @@ import org.telegram.plugins.echo.handlers.interfaces.IMessageHandler;
  * @date 21/11/14
  */
 public class MessageHandler implements IMessageHandler {
+    private static final String LOGTAG = "MESSAGEHANDLER";
     private IKernelComm kernelComm;
 
     public MessageHandler() {
@@ -32,7 +35,11 @@ public class MessageHandler implements IMessageHandler {
      */
     @Override
     public void handleMessage(@NotNull IUser user, @NotNull TLMessage message) {
-        handleMessageInternal(user, message.getMessage());
+        try {
+            handleMessageInternal(user, message.getMessage());
+        } catch (RpcException e) {
+            BotLogger.severe(LOGTAG, e);
+        }
     }
 
     /**
@@ -43,7 +50,11 @@ public class MessageHandler implements IMessageHandler {
      */
     @Override
     public void handleMessage(@NotNull IUser user, @NotNull TLUpdateShortMessage message) {
-        handleMessageInternal(user, message.getMessage());
+        try {
+            handleMessageInternal(user, message.getMessage());
+        } catch (RpcException e) {
+            BotLogger.severe(LOGTAG, e);
+        }
     }
 
     /**
@@ -51,7 +62,7 @@ public class MessageHandler implements IMessageHandler {
      * @param user User that sent the message
      * @param message Message received
      */
-    private void handleMessageInternal(@NotNull IUser user, String message) {
+    private void handleMessageInternal(@NotNull IUser user, String message) throws RpcException {
         kernelComm.sendMessage(user, message);
         kernelComm.performMarkAsRead(user, 0);
     }

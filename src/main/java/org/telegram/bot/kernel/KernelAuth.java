@@ -250,7 +250,7 @@ public class KernelAuth {
                 config.isRegistered = false;
             }
             result = true;
-        } catch (ExecutionException e) {
+        } catch (ExecutionException | RpcException e) {
             BotLogger.error(LOGTAG, e);
             result = false;
         }

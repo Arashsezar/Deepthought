@@ -162,7 +162,7 @@ public class KernelComm implements IKernelComm {
     }
 
     @Override
-    public <T extends TLObject> T doRpcCallSync(final TLMethod<T> method) throws ExecutionException {
+    public <T extends TLObject> T doRpcCallSync(final TLMethod<T> method) throws ExecutionException, RpcException {
         T answer = null;
         if (getApi() != null) {
             final Future<T> result = this.exe.submit(() -> {
@@ -270,7 +270,7 @@ public class KernelComm implements IKernelComm {
         });
     }
 
-    private void sendMessageInternal(@NotNull IUser user, @Nullable String message, @Nullable Integer replayToMsg, boolean enableWebPreview, boolean parseMarkdown) {
+    private void sendMessageInternal(@NotNull IUser user, @Nullable String message, @Nullable Integer replayToMsg, boolean enableWebPreview, boolean parseMarkdown) throws RpcException {
         boolean canSend = false;
         final TLRequestMessagesSendMessage request = new TLRequestMessagesSendMessage();
         request.setPeer(TLFactory.createTLInputPeer(user, null));
@@ -337,7 +337,7 @@ public class KernelComm implements IKernelComm {
         }
     }
 
-    private void sendMessageGroupInternal(@NotNull Chat group, @Nullable String message, @Nullable Integer replayToMsg, boolean enableWebPreview, boolean parseMarkdown) {
+    private void sendMessageGroupInternal(@NotNull Chat group, @Nullable String message, @Nullable Integer replayToMsg, boolean enableWebPreview, boolean parseMarkdown) throws RpcException {
         boolean canSend = false;
         final TLRequestMessagesSendMessage request = new TLRequestMessagesSendMessage();
         request.setPeer(TLFactory.createTLInputPeer(null, group));
@@ -370,7 +370,7 @@ public class KernelComm implements IKernelComm {
         }
     }
 
-    private void sendMessageChannelInternal(Chat channel, @Nullable String message, @Nullable Integer replayToMsg, boolean enableWebPreview, boolean parseMarkdown, boolean asAdmin) {
+    private void sendMessageChannelInternal(Chat channel, @Nullable String message, @Nullable Integer replayToMsg, boolean enableWebPreview, boolean parseMarkdown, boolean asAdmin) throws RpcException {
         boolean canSend = false;
         final TLRequestMessagesSendMessage request = new TLRequestMessagesSendMessage();
 
@@ -407,7 +407,7 @@ public class KernelComm implements IKernelComm {
         }
     }
 
-    private void performSendMessageSyncInternal(TLRequestMessagesSendMessage request) {
+    private void performSendMessageSyncInternal(TLRequestMessagesSendMessage request) throws RpcException{
         final int id = this.random.nextInt();
         request.setRandomId(id);
 
@@ -424,12 +424,12 @@ public class KernelComm implements IKernelComm {
     }
 
     @Override
-    public void sendMessage(@NotNull IUser user, @NotNull String message) {
+    public void sendMessage(@NotNull IUser user, @NotNull String message) throws RpcException {
         sendMessageInternal(user, message, null, true, false);
     }
 
     @Override
-    public void sendMessageWithMarkdown(@NotNull IUser user, @NotNull String message) {
+    public void sendMessageWithMarkdown(@NotNull IUser user, @NotNull String message) throws RpcException {
         sendMessageInternal(user, message, null, true, true);
     }
 
@@ -450,7 +450,7 @@ public class KernelComm implements IKernelComm {
     }
 
     @Override
-    public void sendMessageAsReply(@NotNull IUser user, @NotNull String message, @NotNull Integer replayToMsg) {
+    public void sendMessageAsReply(@NotNull IUser user, @NotNull String message, @NotNull Integer replayToMsg) throws RpcException {
         sendMessageInternal(user, message, replayToMsg, true, false);
     }
 
@@ -473,7 +473,7 @@ public class KernelComm implements IKernelComm {
     }
 
     @Override
-    public void sendMessageWithoutPreview(@NotNull IUser user, @NotNull String message) {
+    public void sendMessageWithoutPreview(@NotNull IUser user, @NotNull String message) throws RpcException {
         sendMessageInternal(user, message, null, false, false);
     }
 
@@ -494,37 +494,37 @@ public class KernelComm implements IKernelComm {
     }
 
     @Override
-    public void sendGroupMessage(Chat group, @NotNull String message) {
+    public void sendGroupMessage(Chat group, @NotNull String message) throws RpcException {
         sendMessageGroupInternal(group, message, null, true, false);
     }
 
     @Override
-    public void sendGroupMessageWithMarkdown(Chat group, @NotNull String message) {
+    public void sendGroupMessageWithMarkdown(Chat group, @NotNull String message) throws RpcException {
         sendMessageGroupInternal(group, message, null, true, true);
     }
 
     @Override
-    public void sendGroupMessageWithoutPreview(Chat group, @NotNull String message) {
+    public void sendGroupMessageWithoutPreview(Chat group, @NotNull String message) throws RpcException {
         sendMessageGroupInternal(group, message, null, false, false);
     }
 
     @Override
-    public void sendChannelMessage(Chat channel, @NotNull String message, boolean asAdmin) {
+    public void sendChannelMessage(Chat channel, @NotNull String message, boolean asAdmin) throws RpcException {
         sendMessageChannelInternal(channel, message, null, true, false, asAdmin);
     }
 
     @Override
-    public void sendChannelMessageWithMarkdown(Chat channel, @NotNull String message, boolean asAdmin) {
+    public void sendChannelMessageWithMarkdown(Chat channel, @NotNull String message, boolean asAdmin) throws RpcException {
         sendMessageChannelInternal(channel, message, null, true, true, asAdmin);
     }
 
     @Override
-    public void sendChannelMessageWithoutPreview(Chat channel, @NotNull String message, boolean asAdmin) {
+    public void sendChannelMessageWithoutPreview(Chat channel, @NotNull String message, boolean asAdmin) throws RpcException {
         sendMessageChannelInternal(channel, message, null, false, false, asAdmin);
     }
 
     @Override
-    public void sendMedia(@NotNull IUser user, @NotNull TLAbsInputMedia media) {
+    public void sendMedia(@NotNull IUser user, @NotNull TLAbsInputMedia media) throws RpcException {
         final int id = this.random.nextInt();
         try {
             BotLogger.debug(LOGTAG, "Sending media " + id + " to: " + user + " : " + media);
@@ -543,7 +543,7 @@ public class KernelComm implements IKernelComm {
     }
 
     @Override
-    public void sendGroupMedia(Chat chat, @NotNull TLAbsInputMedia media) {
+    public void sendGroupMedia(Chat chat, @NotNull TLAbsInputMedia media) throws RpcException {
         final int id = this.random.nextInt();
         try {
             BotLogger.debug(LOGTAG, "Sending media " + id + " to group: " + chat.getId() + " : " + media);
@@ -562,7 +562,7 @@ public class KernelComm implements IKernelComm {
     }
 
     @Override
-    public void sendUploadedSticker(@NotNull String title, @NotNull String mimetype, @NotNull IUser user, long idFile, int parts) {
+    public void sendUploadedSticker(@NotNull String title, @NotNull String mimetype, @NotNull IUser user, long idFile, int parts) throws RpcException{
         final int id = this.random.nextInt();
         try {
             final TLVector<TLAbsDocumentAttribute> attributes = new TLVector<>();
@@ -590,7 +590,7 @@ public class KernelComm implements IKernelComm {
     }
 
     @Override
-    public void sendUploadedGroupSticker(@NotNull String title, @NotNull String mimetype, Chat group, long idFile, int parts) {
+    public void sendUploadedGroupSticker(@NotNull String title, @NotNull String mimetype, Chat group, long idFile, int parts) throws RpcException {
         final int id = this.random.nextInt();
         try {
             final TLVector<TLAbsDocumentAttribute> attributes = new TLVector<>();
@@ -628,16 +628,16 @@ public class KernelComm implements IKernelComm {
     }
 
     @Override
-    public void performMarkAsRead(IUser user, int messageId) {
+    public void performMarkAsRead(IUser user, int messageId) throws RpcException {
         performMarkAsReadInternal(TLFactory.createTLInputPeer(user, null), messageId);
     }
 
     @Override
-    public void performMarkGroupAsRead(Chat group, int messageId) {
+    public void performMarkGroupAsRead(Chat group, int messageId) throws RpcException {
         performMarkAsReadInternal(TLFactory.createTLInputPeer(null, group), messageId);
     }
 
-    private void performMarkAsReadInternal(TLAbsInputPeer inputPeer, int messageId) {
+    private void performMarkAsReadInternal(TLAbsInputPeer inputPeer, int messageId) throws RpcException {
         try {
             if (inputPeer instanceof TLInputPeerChannel) {
                 final TLInputChannel inputChannel = new TLInputChannel();

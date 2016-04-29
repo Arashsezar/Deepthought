@@ -5,6 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.telegram.api.channel.filters.TLChannelMessagesFilterEmpty;
 import org.telegram.api.chat.TLAbsChat;
+import org.telegram.api.engine.RpcException;
 import org.telegram.api.functions.updates.TLRequestUpdatesGetChannelDifference;
 import org.telegram.api.functions.updates.TLRequestUpdatesGetDifference;
 import org.telegram.api.input.chat.TLInputChannel;
@@ -68,7 +69,7 @@ public class DifferencesHandler implements IDifferencesHandler {
                         if (absDifference != null) {
                             onTLAbsDifferences(absDifference);
                         }
-                    } catch (ExecutionException e) {
+                    } catch (ExecutionException | RpcException e) {
                         BotLogger.error(LOGTAG, e);
                     }
                     try {
@@ -125,7 +126,7 @@ public class DifferencesHandler implements IDifferencesHandler {
                     if ((absDifference != null) && !(absDifference instanceof TLUpdatesChannelDifferencesEmpty)) {
                         onTLAbsUpdatesChannelDifferences(chatId, absDifference);
                     }
-                } catch (ExecutionException e) {
+                } catch (ExecutionException | RpcException e) {
                     BotLogger.error(LOGTAG, e);
                 }
                 try {
