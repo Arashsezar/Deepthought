@@ -122,7 +122,7 @@ public class DatabaseManagerImpl implements DatabaseManager {
         try {
             final PreparedStatement preparedStatement = connetion.getPreparedStatement("UPDATE Users SET userHash=? " +
                     "WHERE userId=?");
-            if ((user.getUserHash() == null) || (user.getUserHash() != 0L)) {
+            if ((user.getUserHash() == null) || (user.getUserHash() == 0L)) {
                 preparedStatement.setNull(1, Types.NUMERIC);
             } else {
                 preparedStatement.setLong(1, user.getUserHash());
