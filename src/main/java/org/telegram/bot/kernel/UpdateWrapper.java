@@ -22,6 +22,7 @@ public class UpdateWrapper {
     private int channelId;
     private boolean checkPts;
     private boolean updatePts;
+    private boolean isGettingDifferences;
 
     public UpdateWrapper(TLObject update) {
         this.update = update;
@@ -49,6 +50,10 @@ public class UpdateWrapper {
 
     public void disableUpdatePts() {
         updatePts = false;
+    }
+
+    public void enableGettingDifferences() {
+        isGettingDifferences = true;
     }
 
     public TLObject getUpdate() {
@@ -85,6 +90,10 @@ public class UpdateWrapper {
 
     public boolean isChannel() {
         return isChannel;
+    }
+
+    public boolean isGettingDifferences() {
+        return isGettingDifferences;
     }
 
     public int getChannelId() {

@@ -104,53 +104,53 @@ public abstract class UpdatesHandlerBase implements IUpdatesHandler {
         if (canHandle) {
             final TLObject update = updateWrapper.getUpdate();
             if (update instanceof TLUpdateShortMessage) {
-                onTLUpdateShortMessage((TLUpdateShortMessage) update);
+                onTLUpdateShortMessage((TLUpdateShortMessage) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateShortChatMessage) {
-                onTLUpdateShortChatMessage((TLUpdateShortChatMessage) update);
+                onTLUpdateShortChatMessage((TLUpdateShortChatMessage) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateShortSentMessage) {
                 onTLUpdateShortSentMessage((TLUpdateShortSentMessage) update);
             } else if (update instanceof TLUpdateNewMessage) {
-                onTLUpdateNewMessage((TLUpdateNewMessage) update);
+                onTLUpdateNewMessage((TLUpdateNewMessage) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateChatParticipants) {
-                onTLUpdateChatParticipants((TLUpdateChatParticipants) update);
+                onTLUpdateChatParticipants((TLUpdateChatParticipants) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateChannelNewMessage) {
-                onTLUpdateChannelNewMessage((TLUpdateChannelNewMessage) update);
+                onTLUpdateChannelNewMessage((TLUpdateChannelNewMessage) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateChannel) {
-                onTLUpdateChannel((TLUpdateChannel) update);
+                onTLUpdateChannel((TLUpdateChannel) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateBotInlineQuery) {
-                onTLUpdateBotInlineQuery((TLUpdateBotInlineQuery) update);
+                onTLUpdateBotInlineQuery((TLUpdateBotInlineQuery) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateBotInlineSend) {
-                onTLUpdateBotInlineSend((TLUpdateBotInlineSend) update);
+                onTLUpdateBotInlineSend((TLUpdateBotInlineSend) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateChannelGroup) {
-                onTLUpdateChannelGroup((TLUpdateChannelGroup) update);
+                onTLUpdateChannelGroup((TLUpdateChannelGroup) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateChannelMessageViews) {
-                onTLUpdateChannelMessageViews((TLUpdateChannelMessageViews) update);
+                onTLUpdateChannelMessageViews((TLUpdateChannelMessageViews) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateChannelPinnedMessage) {
-                onTLUpdateChannelPinnedMessage((TLUpdateChannelPinnedMessage) update);
+                onTLUpdateChannelPinnedMessage((TLUpdateChannelPinnedMessage) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateChannelTooLong) {
-                onTLUpdateChannelTooLong((TLUpdateChannelTooLong) update);
+                onTLUpdateChannelTooLong((TLUpdateChannelTooLong) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateChatAdmin) {
-                onTLUpdateChatAdmin((TLUpdateChatAdmin) update);
+                onTLUpdateChatAdmin((TLUpdateChatAdmin) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateChatParticipantAdd) {
-                onTLUpdateChatParticipantAdd((TLUpdateChatParticipantAdd) update);
+                onTLUpdateChatParticipantAdd((TLUpdateChatParticipantAdd) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateChatParticipantAdmin) {
-                onTLUpdateChatParticipantAdmin((TLUpdateChatParticipantAdmin) update);
+                onTLUpdateChatParticipantAdmin((TLUpdateChatParticipantAdmin) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateChatParticipantDelete) {
-                onTLUpdateChatParticipantDelete((TLUpdateChatParticipantDelete) update);
+                onTLUpdateChatParticipantDelete((TLUpdateChatParticipantDelete) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateChatUserTyping) {
-                onTLUpdateChatUserTyping((TLUpdateChatUserTyping) update);
+                onTLUpdateChatUserTyping((TLUpdateChatUserTyping) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateContactLink) {
-                onTLUpdateContactLink((TLUpdateContactLink) update);
+                onTLUpdateContactLink((TLUpdateContactLink) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateContactRegistered) {
-                onTLUpdateContactRegistered((TLUpdateContactRegistered) update);
+                onTLUpdateContactRegistered((TLUpdateContactRegistered) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateDcOptions) {
                 onTLUpdateDcOptions((TLUpdateDcOptions) update);
             } else if (update instanceof TLUpdateDeleteChannelMessages) {
-                onTLUpdateDeleteChannelMessages((TLUpdateDeleteChannelMessages) update);
+                onTLUpdateDeleteChannelMessages((TLUpdateDeleteChannelMessages) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateDeleteMessages) {
-                onTLUpdateDeleteMessages((TLUpdateDeleteMessages) update);
+                onTLUpdateDeleteMessages((TLUpdateDeleteMessages) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateEditChannelMessage) {
-                onTLUpdateEditChannelMessage((TLUpdateEditChannelMessage) update);
+                onTLUpdateEditChannelMessage((TLUpdateEditChannelMessage) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateMessageId) {
                 onTLUpdateMessageId((TLUpdateMessageId) update);
             } else if (update instanceof TLUpdateNewAuthorization) {
@@ -158,17 +158,17 @@ public abstract class UpdatesHandlerBase implements IUpdatesHandler {
             } else if (update instanceof TLUpdateNewStickerSet) {
                 onTLUpdateNewStickerSet((TLUpdateNewStickerSet) update);
             } else if (update instanceof TLUpdateNotifySettings) {
-                onTLUpdateNotifySettings((TLUpdateNotifySettings) update);
+                onTLUpdateNotifySettings((TLUpdateNotifySettings) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdatePrivacy) {
                 onTLUpdatePrivacy((TLUpdatePrivacy) update);
             } else if (update instanceof TLUpdateReadChannelInbox) {
-                onTLUpdateReadChannelInbox((TLUpdateReadChannelInbox) update);
+                onTLUpdateReadChannelInbox((TLUpdateReadChannelInbox) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateReadMessagesContents) {
                 onTLUpdateReadMessagesContents((TLUpdateReadMessagesContents) update);
             } else if (update instanceof TLUpdateReadMessagesInbox) {
-                onTLUpdateReadMessagesInbox((TLUpdateReadMessagesInbox) update);
+                onTLUpdateReadMessagesInbox((TLUpdateReadMessagesInbox) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateReadMessagesOutbox) {
-                onTLUpdateReadMessagesOutbox((TLUpdateReadMessagesOutbox) update);
+                onTLUpdateReadMessagesOutbox((TLUpdateReadMessagesOutbox) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateSavedGifs) {
                 onTLUpdateSavedGifs((TLUpdateSavedGifs) update);
             } else if (update instanceof TLUpdateServiceNotification) {
@@ -178,27 +178,27 @@ public abstract class UpdatesHandlerBase implements IUpdatesHandler {
             } else if (update instanceof TLUpdateStickerSetsOrder) {
                 onTLUpdateStickerSetsOrder((TLUpdateStickerSetsOrder) update);
             } else if (update instanceof TLUpdateUserBlocked) {
-                onTLUpdateUserBlocked((TLUpdateUserBlocked) update);
+                onTLUpdateUserBlocked((TLUpdateUserBlocked) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateUserName) {
-                onTLUpdateUserName((TLUpdateUserName) update);
+                onTLUpdateUserName((TLUpdateUserName) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateUserPhone) {
-                onTLUpdateUserPhone((TLUpdateUserPhone) update);
+                onTLUpdateUserPhone((TLUpdateUserPhone) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateUserPhoto) {
-                onTLUpdateUserPhoto((TLUpdateUserPhoto) update);
+                onTLUpdateUserPhoto((TLUpdateUserPhoto) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateUserStatus) {
-                onTLUpdateUserStatus((TLUpdateUserStatus) update);
+                onTLUpdateUserStatus((TLUpdateUserStatus) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateUserTyping) {
-                onTLUpdateUserTyping((TLUpdateUserTyping) update);
+                onTLUpdateUserTyping((TLUpdateUserTyping) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateWebPage) {
                 onTLUpdateWebPage((TLUpdateWebPage) update);
             } else if (update instanceof TLFakeUpdate) {
                 onTLFakeUpdate((TLFakeUpdate) update);
             } else if (update instanceof TLUpdateBotCallbackQuery) {
-                onTLUpdateBotCallbackQuery((TLUpdateBotCallbackQuery) update);
+                onTLUpdateBotCallbackQuery((TLUpdateBotCallbackQuery) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateEditMessage) {
-                onTLUpdateEditMessage((TLUpdateEditMessage) update);
+                onTLUpdateEditMessage((TLUpdateEditMessage) update, updateWrapper.isGettingDifferences());
             } else if (update instanceof TLUpdateInlineBotCallbackQuery) {
-                onTLUpdateInlineBotCallbackQuery((TLUpdateInlineBotCallbackQuery) update);
+                onTLUpdateInlineBotCallbackQuery((TLUpdateInlineBotCallbackQuery) update, updateWrapper.isGettingDifferences());
             } else {
                 BotLogger.debug(LOGTAG, "Unsupported TLAbsUpdate: " + update.toString());
             }
@@ -257,17 +257,21 @@ public abstract class UpdatesHandlerBase implements IUpdatesHandler {
                 updateWrapper.getSeq(), updateWrapper.getDate());
     }
 
-    private void onTLUpdateShortMessage(TLUpdateShortMessage update) {
+    private void onTLUpdateShortMessage(TLUpdateShortMessage update, boolean gettingDiffences) {
         if (isUserFromShortMessageMissing(update)) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateShortMessageCustom(update);
         }
     }
 
-    private void onTLUpdateShortChatMessage(TLUpdateShortChatMessage update) {
+    private void onTLUpdateShortChatMessage(TLUpdateShortChatMessage update, boolean gettingDiffences) {
         if (isChatMissing(update.getChatId()) || isUserMissing(update.getFromId())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateShortChatMessageCustom(update);
         }
@@ -277,26 +281,32 @@ public abstract class UpdatesHandlerBase implements IUpdatesHandler {
         onTLUpdateShortSentMessageCustom(update);
     }
 
-    private void onTLUpdateChatParticipants(TLUpdateChatParticipants update) {
+    private void onTLUpdateChatParticipants(TLUpdateChatParticipants update, boolean gettingDiffences) {
         if (isChatMissing(update.getParticipants().getChatId())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateChatParticipantsCustom(update);
         }
     }
 
-    private void onTLUpdateNewMessage(TLUpdateNewMessage update) {
+    private void onTLUpdateNewMessage(TLUpdateNewMessage update, boolean gettingDiffences) {
         if (isUserFromMessageMissing(update.getMessage())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateNewMessageCustom(update);
         }
     }
 
-    private void onTLUpdateChannelNewMessage(TLUpdateChannelNewMessage update) {
+    private void onTLUpdateChannelNewMessage(TLUpdateChannelNewMessage update, boolean gettingDiffences) {
         if (isUserFromMessageMissing(update.getMessage(), false)) {
             if (isChatMissing(update.getChannelId())) {
-                differencesHandler.getDifferences();
+                if (!gettingDiffences) {
+                    differencesHandler.getDifferences();
+                }
             } else {
                 final Chat channel = databaseManager.getChatById(update.getMessage().getChatId());
                 if (channel != null) {
@@ -308,57 +318,71 @@ public abstract class UpdatesHandlerBase implements IUpdatesHandler {
         }
     }
 
-    private void onTLUpdateChannel(TLUpdateChannel update) {
+    private void onTLUpdateChannel(TLUpdateChannel update, boolean gettingDiffences) {
         if (isChatMissing(update.getChannelId())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateChannelCustom(update);
         }
     }
 
-    private void onTLUpdateBotInlineQuery(TLUpdateBotInlineQuery update) {
+    private void onTLUpdateBotInlineQuery(TLUpdateBotInlineQuery update, boolean gettingDiffences) {
         if (isUserMissing(update.getUserId())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateBotInlineQueryCustom(update);
         }
     }
 
-    private void onTLUpdateBotInlineSend(TLUpdateBotInlineSend update) {
+    private void onTLUpdateBotInlineSend(TLUpdateBotInlineSend update, boolean gettingDiffences) {
         if (isUserMissing(update.getUserId())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateBotInlineSendCustom(update);
         }
     }
 
-    private void onTLUpdateChannelGroup(TLUpdateChannelGroup update) {
+    private void onTLUpdateChannelGroup(TLUpdateChannelGroup update, boolean gettingDiffences) {
         if (isChatMissing(update.getChannelId())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateChannelGroupCustom(update);
         }
     }
 
-    private void onTLUpdateChannelMessageViews(TLUpdateChannelMessageViews update) {
+    private void onTLUpdateChannelMessageViews(TLUpdateChannelMessageViews update, boolean gettingDiffences) {
         if (isChatMissing(update.getChannelId())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateChannelMessageViewsCustom(update);
         }
     }
 
-    private void onTLUpdateChannelPinnedMessage(TLUpdateChannelPinnedMessage update) {
+    private void onTLUpdateChannelPinnedMessage(TLUpdateChannelPinnedMessage update, boolean gettingDiffences) {
         if (isChatMissing(update.getChannelId())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateChannelPinnedMessageCustom(update);
         }
     }
 
-    private void onTLUpdateChannelTooLong(TLUpdateChannelTooLong update) {
+    private void onTLUpdateChannelTooLong(TLUpdateChannelTooLong update, boolean gettingDiffences) {
         if (isChatMissing(update.getChannelId())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             final Chat channel = databaseManager.getChatById(update.getChannelId());
             if (channel != null) {
@@ -367,57 +391,71 @@ public abstract class UpdatesHandlerBase implements IUpdatesHandler {
         }
     }
 
-    private void onTLUpdateChatAdmin(TLUpdateChatAdmin update) {
+    private void onTLUpdateChatAdmin(TLUpdateChatAdmin update, boolean gettingDiffences) {
         if (isChatMissing(update.getChatId())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateChatAdminCustom(update);
         }
     }
 
-    private void onTLUpdateChatParticipantAdd(TLUpdateChatParticipantAdd update) {
+    private void onTLUpdateChatParticipantAdd(TLUpdateChatParticipantAdd update, boolean gettingDiffences) {
         if (isChatMissing(update.getChatId()) || isUserMissing(update.getUserId()) || isUserMissing(update.getInviterId())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateChatParticipantAddCustom(update);
         }
     }
 
-    private void onTLUpdateChatParticipantAdmin(TLUpdateChatParticipantAdmin update) {
+    private void onTLUpdateChatParticipantAdmin(TLUpdateChatParticipantAdmin update, boolean gettingDiffences) {
         if (isChatMissing(update.getChatId()) || isUserMissing(update.getUserId())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateChatParticipantAdminCustom(update);
         }
     }
 
-    private void onTLUpdateChatParticipantDelete(TLUpdateChatParticipantDelete update) {
+    private void onTLUpdateChatParticipantDelete(TLUpdateChatParticipantDelete update, boolean gettingDiffences) {
         if (isChatMissing(update.getChatId()) || isUserMissing(update.getUserId())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateChatParticipantDeleteCustom(update);
         }
     }
 
-    private void onTLUpdateChatUserTyping(TLUpdateChatUserTyping update) {
+    private void onTLUpdateChatUserTyping(TLUpdateChatUserTyping update, boolean gettingDiffences) {
         if (isChatMissing(update.getChatId()) || isUserMissing(update.getUserId())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateChatUserTypingCustom(update);
         }
     }
 
-    private void onTLUpdateContactLink(TLUpdateContactLink update) {
+    private void onTLUpdateContactLink(TLUpdateContactLink update, boolean gettingDiffences) {
         if (isUserMissing(update.getUserId())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateContactLinkCustom(update);
         }
     }
 
-    private void onTLUpdateContactRegistered(TLUpdateContactRegistered update) {
+    private void onTLUpdateContactRegistered(TLUpdateContactRegistered update, boolean gettingDiffences) {
         if (isUserMissing(update.getUserId())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateContactRegisteredCustom(update);
         }
@@ -427,22 +465,26 @@ public abstract class UpdatesHandlerBase implements IUpdatesHandler {
         onTLUpdateDcOptionsCustom(update);
     }
 
-    private void onTLUpdateDeleteChannelMessages(TLUpdateDeleteChannelMessages update) {
+    private void onTLUpdateDeleteChannelMessages(TLUpdateDeleteChannelMessages update, boolean gettingDiffences) {
         if (isChatMissing(update.getChannelId())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateDeleteChannelMessagesCustom(update);
         }
     }
 
-    private void onTLUpdateDeleteMessages(TLUpdateDeleteMessages update) {
+    private void onTLUpdateDeleteMessages(TLUpdateDeleteMessages update, boolean gettingDiffences) {
         onTLUpdateDeleteMessagesCustom(update);
     }
 
-    private void onTLUpdateEditChannelMessage(TLUpdateEditChannelMessage update) {
+    private void onTLUpdateEditChannelMessage(TLUpdateEditChannelMessage update, boolean gettingDiffences) {
         if (isUserFromMessageMissing(update.getMessage(), false)) {
             if (isChatMissing(update.getChannelId())) {
-                differencesHandler.getDifferences();
+                if (!gettingDiffences) {
+                    differencesHandler.getDifferences();
+                }
             } else {
                 final Chat channel = databaseManager.getChatById(update.getMessage().getChatId());
                 if (channel != null) {
@@ -466,9 +508,11 @@ public abstract class UpdatesHandlerBase implements IUpdatesHandler {
         onTLUpdateNewStickerSetCustom(update);
     }
 
-    private void onTLUpdateNotifySettings(TLUpdateNotifySettings update) {
+    private void onTLUpdateNotifySettings(TLUpdateNotifySettings update, boolean gettingDiffences) {
         if (isNotifyPeerMissing(update.getPeer())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateNotifySettingsCustom(update);
         }
@@ -478,9 +522,11 @@ public abstract class UpdatesHandlerBase implements IUpdatesHandler {
         onTLUpdatePrivacyCustom(update);
     }
 
-    private void onTLUpdateReadChannelInbox(TLUpdateReadChannelInbox update) {
+    private void onTLUpdateReadChannelInbox(TLUpdateReadChannelInbox update, boolean gettingDiffences) {
         if (isChatMissing(update.getChannelId())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateReadChannelInboxCustom(update);
         }
@@ -490,17 +536,21 @@ public abstract class UpdatesHandlerBase implements IUpdatesHandler {
         onTLUpdateReadMessagesContentsCustom(update);
     }
 
-    private void onTLUpdateReadMessagesInbox(TLUpdateReadMessagesInbox update) {
+    private void onTLUpdateReadMessagesInbox(TLUpdateReadMessagesInbox update, boolean gettingDiffences) {
         if (isPeerMissing(update.getPeer())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateReadMessagesInboxCustom(update);
         }
     }
 
-    private void onTLUpdateReadMessagesOutbox(TLUpdateReadMessagesOutbox update) {
+    private void onTLUpdateReadMessagesOutbox(TLUpdateReadMessagesOutbox update, boolean gettingDiffences) {
         if (isPeerMissing(update.getPeer())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateReadMessagesOutboxCustom(update);
         }
@@ -522,49 +572,61 @@ public abstract class UpdatesHandlerBase implements IUpdatesHandler {
         onTLUpdateStickerSetsOrderCustom(update);
     }
 
-    private void onTLUpdateUserBlocked(TLUpdateUserBlocked update) {
+    private void onTLUpdateUserBlocked(TLUpdateUserBlocked update, boolean gettingDiffences) {
         if (isUserMissing(update.getUserId())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateUserBlockedCustom(update);
         }
     }
 
-    private void onTLUpdateUserName(TLUpdateUserName update) {
+    private void onTLUpdateUserName(TLUpdateUserName update, boolean gettingDiffences) {
         if (isUserMissing(update.getUserId())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateUserNameCustom(update);
         }
     }
 
-    private void onTLUpdateUserPhone(TLUpdateUserPhone update) {
+    private void onTLUpdateUserPhone(TLUpdateUserPhone update, boolean gettingDiffences) {
         if (isUserMissing(update.getUserId())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateUserPhoneCustom(update);
         }
     }
 
-    private void onTLUpdateUserPhoto(TLUpdateUserPhoto update) {
+    private void onTLUpdateUserPhoto(TLUpdateUserPhoto update, boolean gettingDiffences) {
         if (isUserMissing(update.getUserId())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateUserPhotoCustom(update);
         }
     }
 
-    private void onTLUpdateUserStatus(TLUpdateUserStatus update) {
+    private void onTLUpdateUserStatus(TLUpdateUserStatus update, boolean gettingDiffences) {
         if (isUserMissing(update.getUserId())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateUserStatusCustom(update);
         }
     }
 
-    private void onTLUpdateUserTyping(TLUpdateUserTyping update) {
+    private void onTLUpdateUserTyping(TLUpdateUserTyping update, boolean gettingDiffences) {
         if (isUserMissing(update.getUserId())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateUserTypingCustom(update);
         }
@@ -574,25 +636,31 @@ public abstract class UpdatesHandlerBase implements IUpdatesHandler {
         onTLUpdateWebPageCustom(update);
     }
 
-    private void onTLUpdateBotCallbackQuery(TLUpdateBotCallbackQuery update) {
+    private void onTLUpdateBotCallbackQuery(TLUpdateBotCallbackQuery update, boolean gettingDiffences) {
         if (isUserMissing(update.getUserId()) || isPeerMissing(update.getPeer())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateBotCallbackQueryCustom(update);
         }
     }
 
-    private void onTLUpdateEditMessage(TLUpdateEditMessage update){
+    private void onTLUpdateEditMessage(TLUpdateEditMessage update, boolean gettingDiffences){
         if (isUserFromMessageMissing(update.getMessage())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateEditMessageCustom(update);
         }
     }
 
-    private void onTLUpdateInlineBotCallbackQuery(TLUpdateInlineBotCallbackQuery update){
+    private void onTLUpdateInlineBotCallbackQuery(TLUpdateInlineBotCallbackQuery update, boolean gettingDiffences){
         if (isUserMissing(update.getUserId())) {
-            differencesHandler.getDifferences();
+            if (!gettingDiffences) {
+                differencesHandler.getDifferences();
+            }
         } else {
             onTLUpdateInlineBotCallbackQueryCustom(update);
         }
@@ -616,11 +684,12 @@ public abstract class UpdatesHandlerBase implements IUpdatesHandler {
     public final void onTLAbsDifference(@NotNull TLAbsDifference absDifference) {
         onUsers(absDifference.getUsers());
         onChats(absDifference.getChats());
-        absDifference.getNewMessages().stream().forEach(this::onTLAbsMessageCustom);
+        absDifference.getNewMessages().forEach(this::onTLAbsMessageCustom);
         absDifference.getOtherUpdates().stream().map(x -> {
             UpdateWrapper updateWrapper = new UpdateWrapper(x);
             updateWrapper.disablePtsCheck();
             updateWrapper.disableUpdatePts();
+            updateWrapper.enableGettingDifferences();
             return updateWrapper;
         }).forEach(this::processUpdate);
     }
@@ -629,7 +698,7 @@ public abstract class UpdatesHandlerBase implements IUpdatesHandler {
     public final void onTLChannelDifferences(List<TLAbsUser> users, List<TLAbsMessage> messages, List<TLAbsUpdate> newUpdates, List<TLAbsChat> chats) {
         onUsers(users);
         onChats(chats);
-        messages.stream().forEach(this::onTLAbsMessageCustom);
+        messages.forEach(this::onTLAbsMessageCustom);
         newUpdates.stream().map(x -> {
             UpdateWrapper updateWrapper = new UpdateWrapper(x);
             updateWrapper.disablePtsCheck();
